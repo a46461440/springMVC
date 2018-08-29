@@ -1,9 +1,7 @@
 package com.zxc.action;
 
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 import org.springframework.web.servlet.mvc.LastModified;
@@ -11,8 +9,6 @@ import org.springframework.web.servlet.mvc.LastModified;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//@Controller
-//@RequestMapping("/chapter3")
 @Component("/lastModified")
 public class HelloWorldActionChapter4 extends AbstractController implements LastModified{
 
