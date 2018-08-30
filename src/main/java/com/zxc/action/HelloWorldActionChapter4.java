@@ -19,7 +19,6 @@ public class HelloWorldActionChapter4 extends AbstractController implements Last
         return "index";
     }
 
-    @Override
     public long getLastModified(HttpServletRequest httpServletRequest) {
         if (lastModified == 0L)
             lastModified = System.currentTimeMillis();

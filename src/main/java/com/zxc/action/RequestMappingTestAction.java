@@ -29,7 +29,6 @@ public class RequestMappingTestAction {
     private HttpServletRequest request;
 
     private static Thread thread = new Thread(new Runnable() {
-        @Override
         public void run() {
             while (true) {
                 atomicIntegerA.getAndIncrement();
@@ -40,7 +39,7 @@ public class RequestMappingTestAction {
                 }
             }
         }
-    }, "自己创建的线程");
+    }, "the thread of mime");
 
     //该方法会在所有requestMapping执行之前执行
     //并且给model设置ModelAttribute的value和该方法的返回值为k、v

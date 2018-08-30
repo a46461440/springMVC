@@ -72,6 +72,16 @@
             <version>${spring}</version>
         </dependency>
 
+        <!--<dependency>-->
+        <!--<groupId>org.apache.taglibs</groupId>-->
+        <!--<artifactId>taglibs-standard-spec</artifactId>-->
+        <!--<version>1.2.1</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.apache.taglibs</groupId>-->
+        <!--<artifactId>taglibs-standard-impl</artifactId>-->
+        <!--<version>1.2.1</version>-->
+        <!--</dependency>-->
         <!--单元测试依赖 -->
         <dependency>
             <groupId>junit</groupId>
@@ -87,6 +97,30 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>3.0.1</version>
         </dependency>
+
+        <!--springMVC配置jsonConvert的时候使用jackson-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.46</version>
+        </dependency>
+
     </dependencies>
 
 </project>

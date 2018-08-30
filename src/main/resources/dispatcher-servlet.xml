@@ -9,10 +9,49 @@
 
     <context:component-scan base-package="com.zxc.action"/>
     <mvc:annotation-driven/>
+    <!--处理静态文件无法找到-->
+    <mvc:default-servlet-handler/>
+    <!--负责将一个对象转换为一个对象，并将对象绑定到请求方法的参数中-->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <!--默认前四个-->
+                <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter"/>
+                <!--这个是为了处理RequestBody注入json数据需要使用的converter jackson方式是普通的方式 fast方式是阿里集成的方式-->
+                <!--<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>-->
+                <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                    <property name="supportedMediaTypes">
+                        <list>
+                            <value>text/html;charset=UTF-8</value>
+                            <value>application/json;charset=UTF-8</value>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+
+    <!--指定i18N的properties，这里必须配置id为messageSource-->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>i18N.message</value>
+            </list>
+        </property>
+    </bean>
+    <mvc:interceptors>
+        <!--国际化默认使用浏览器使用的区域信息 下面一行是默认-->
+        <!--<bean class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver"/>-->
+        <!--如下使用的话则使用的是cookie/session方式-->
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
+    </mvc:interceptors>
 
 </beans>

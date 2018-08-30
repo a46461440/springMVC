@@ -1,10 +1,10 @@
 package com.zxc.pojo;
 
-public class RequestMappingPojo {
+public class User {
 
     private String name;
 
-    private int age;
+    private String password;
 
     public String getName() {
         return name;
@@ -14,19 +14,20 @@ public class RequestMappingPojo {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public String toString() {
-        return "RequestMappingPojo{" +
+        return "User{" +
                 "name='" + name + '\'' +
-                ", age=" + age +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
+
