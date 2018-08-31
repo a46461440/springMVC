@@ -8,10 +8,13 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
     <context:component-scan base-package="com.zxc.action"/>
+
+    <!--annotation-driven添加注解handlerMapping和handlerAdapter conversion-service为使用自定义数据转换器-->
+    <!--<mvc:annotation-driven conversion-service="conversionService"/>-->
     <mvc:annotation-driven/>
     <!--处理静态文件无法找到-->
     <mvc:default-servlet-handler/>
-    <!--负责将一个对象转换为一个对象，并将对象绑定到请求方法的参数中-->
+    <!--负责将http内容转换成可转换的格式-->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
             <list>
@@ -54,4 +57,29 @@
         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
     </mvc:interceptors>
 
+    <!--convert数据转化 可以将对应的value转化成需要的value类型-->
+    <!--<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">-->
+        <!--<property name="converters">-->
+            <!--<list>-->
+                <!--<bean class="com.zxc.convert.String2DateConvert">-->
+                    <!--<property name="pattern" value="yyyyMMdd"/>-->
+                <!--</bean>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--formatter数据转化 可以将对应的String类型转化成需要的value类型 其中也可以注册converter-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="formatters">
+            <list>
+                <bean class="com.zxc.convert.DateFormatter">
+                    <property name="pattern" value="yyyyMMdd"/>
+                </bean>
+            </list>
+        </property>
+        <property name="converters">
+            <list>
+
+            </list>
+        </property>
+    </bean>
 </beans>
