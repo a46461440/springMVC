@@ -51,11 +51,13 @@
         </property>
     </bean>
     <mvc:interceptors>
-        <!--国际化默认使用浏览器使用的区域信息 下面一行是默认-->
-        <!--<bean class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver"/>-->
         <!--如下使用的话则使用的是cookie/session方式-->
         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
     </mvc:interceptors>
+    <!--国际化默认使用浏览器使用的区域信息 下面一行是默认-->
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver"/>
+    <!--<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>-->
+    <!--<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"/>-->
 
     <!--convert数据转化 可以将对应的value转化成需要的value类型-->
     <!--<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">-->

@@ -14,6 +14,10 @@
             <td colspan="2"><input type="submit" value="<spring:message code="submit"/>"> </td>
         </tr>
     </form>
+    <a href="${pageContext.request['contextPath']}/i18N/indexForSession?request_local=zh_CN">session中文</a><br>
+    <a href="${pageContext.request['contextPath']}/i18N/indexForSession?request_local=en_US">session英文</a><br>
+    <a href="${pageContext.request['contextPath']}/i18N/indexForCookie?request_local=zh_CN">cookie中文</a><br>
+    <a href="${pageContext.request['contextPath']}/i18N/indexForCookie?request_local=en_US">cookie英文</a><br>
 </table>
 </body>
 </html>

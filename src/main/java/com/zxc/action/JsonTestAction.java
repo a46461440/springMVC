@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 @SessionAttributes(value = {"pojo"}, types = {RequestMappingPojo.class})
 @Controller
@@ -31,6 +32,16 @@ public class JsonTestAction {
         pojo.setAge(22);
         model.asMap().put("pojo", pojo);
         return pojo;
+    }
+    @RequestMapping("/normalAndGetOther")
+    public @ResponseBody
+    Map normalAndGetOtherGetPutJson(@RequestBody Map map, Integer age, HttpServletRequest request, Model model) {
+        this.log.info(map.toString());
+        String name = request.getParameter("name");
+        this.log.info(name);
+        this.log.info(age);
+        model.asMap().put("pojo", map);
+        return map;
     }
 
 }

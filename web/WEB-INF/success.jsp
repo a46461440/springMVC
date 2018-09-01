@@ -11,13 +11,19 @@
 <a href="/requestMappingTest/cookie">cookie</a>
 <p>ModelAttribute设置在有返回类型的方法上 model的值为:${ModelAttributeSetKey}</p>
 <p>ModelAttribute设置在属性上 model的值为:${requestMappingPojo.name}</p>
-<button onclick="normalJson()">点击测试json</button>
+<button onclick="normalJson(1)">点击测试json</button>
+<button onclick="normalJson(2)">点击测试json2</button>
 <p>pojo对象放入了session:<span id="pojo_display"></span></p>
 <script type="text/javascript" src="/js/jquery-1.3.2.js"></script>
 <script>
-    let normalJson = function () {
+    let normalJson = function (i) {
+        let url;
+        if (i == 1)
+            url = "${pageContext.request['contextPath']}/jsonTest/normal";
+        else if (i == 2)
+            url = "${pageContext.request['contextPath']}/jsonTest/normalAndGetOther ";
         $.ajax({
-            url : "${pageContext.request['contextPath']}/jsonTest/normal",
+            url : url,
             contentType: 'application/json;charset=UTF-8',
             type : 'post',
             async : true,
