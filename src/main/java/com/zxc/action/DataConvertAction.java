@@ -44,7 +44,7 @@ public class DataConvertAction {
     }
 
     @RequestMapping("/testValidate")
-    public String testValidate(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+    public String testValidate(@Valid @ModelAttribute User user, BindingResult bindingResult) {
         this.log.info(user);
         this.log.info(bindingResult);
         if (bindingResult.hasErrors())

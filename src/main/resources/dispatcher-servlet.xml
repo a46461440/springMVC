@@ -11,6 +11,7 @@
 
     <!--annotation-driven添加注解handlerMapping和handlerAdapter conversion-service为使用自定义数据转换器-->
     <!--<mvc:annotation-driven conversion-service="conversionService"/>-->
+    <!--里面自动装配了conversionService和LocalValidatorFactoryBean-->
     <mvc:annotation-driven/>
     <!--处理静态文件无法找到-->
     <mvc:default-servlet-handler/>
@@ -53,6 +54,8 @@
     <mvc:interceptors>
         <!--如下使用的话则使用的是cookie/session方式-->
         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
+        <bean class="com.zxc.interceptor.LoginInterceptor"/>
+        <bean class="com.zxc.interceptor.TestInterceptor"/>
     </mvc:interceptors>
     <!--国际化默认使用浏览器使用的区域信息 下面一行是默认-->
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver"/>
@@ -82,6 +85,16 @@
             <list>
 
             </list>
+        </property>
+    </bean>
+
+    <!--文件处理-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize">
+            <value>1048576</value>
+        </property>
+        <property name="defaultEncoding">
+            <value>utf-8</value>
         </property>
     </bean>
 </beans>
