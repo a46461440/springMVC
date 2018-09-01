@@ -29,7 +29,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         if (!canPass) {
             if (session.getAttribute("user") != null) {
                 User user = (User) session.getAttribute("user");
-                if (user != null && user.getName().equals("zxc"))
+                if (user != null && "zxc".equals(user.getName()))
                     canPass = true;
             }
         }

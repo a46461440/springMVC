@@ -25,7 +25,7 @@ public class LoginAction {
     public String login(User user, Model model) {
         this.log.info(user);
         model.addAttribute("user", user);
-        if (user != null && !user.getName().equals("zxc"))
+        if (user != null && !"zxc".equals(user.getName()))
             return INDEX;
         return "success";
     }

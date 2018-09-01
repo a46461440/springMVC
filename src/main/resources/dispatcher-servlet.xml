@@ -54,8 +54,8 @@
     <mvc:interceptors>
         <!--如下使用的话则使用的是cookie/session方式-->
         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
-        <bean class="com.zxc.interceptor.LoginInterceptor"/>
         <bean class="com.zxc.interceptor.TestInterceptor"/>
+        <bean class="com.zxc.interceptor.LoginInterceptor"/>
     </mvc:interceptors>
     <!--国际化默认使用浏览器使用的区域信息 下面一行是默认-->
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver"/>
