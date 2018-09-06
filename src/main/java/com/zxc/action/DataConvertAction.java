@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.beans.PropertyEditorSupport;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
@@ -27,7 +30,20 @@ public class DataConvertAction {
     //InitBinder注解可以注册conventer接口 优先级大于全局conventer
     @InitBinder
     public void init(WebDataBinder binder) {
-        binder.registerCustomEditor(Date.class, new DateEditor());
+//        binder.registerCustomEditor(Date.class, new DateEditor());
+        binder.registerCustomEditor(Date.class, new PropertyEditorSupport(){
+            @Override
+            public void setAsText(String text) throws IllegalArgumentException {
+                if (text == null || text.trim().equals("")) return;
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                try {
+                    Date date = simpleDateFormat.parse(text);
+                    setValue(date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     @RequestMapping("/index")
